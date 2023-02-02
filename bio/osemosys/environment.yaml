@@ -1,0 +1,10 @@
+name: osemosyswrapper
+
+channels:
+  - conda-forge
+  - defaults
+  - bioconda
+dependencies:
+  - glpk
+  - snakemake-minimal
+  - python>=3

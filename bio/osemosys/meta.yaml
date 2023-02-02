@@ -1,0 +1,13 @@
+name: osemosys
+description: build osemosys LP file with GLPK and then optimise with user defined solver CPLEX/Gurobi/CBC
+url: 
+authors:
+- Nandi Moksnes
+- Emir Fejzic
+- Youssef Almulla
+input:
+- textfile with OSeMOSYS parameters
+- Osemosys file
+- Solver
+output:
+- Solved text file

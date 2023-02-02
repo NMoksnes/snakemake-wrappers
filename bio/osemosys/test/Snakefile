@@ -1,0 +1,42 @@
+
+rule generate_osemosys:
+    input:
+        data = "osemosysfiles/simplicity_test.txt",
+        model = "osemosysfiles/osemosys.txt"
+    message: "Running osemosys test"
+    output:
+        "osemosysfiles/simplicity.lp"
+
+    wrapper:
+        "master/bio/osemosys"
+
+
+
+
+
+# rule get_status:
+#     params:
+#         modelruns=len(MODELRUNS),
+#         scenarios=len(SCENARIOS)
+#     input: expand("temp/{scenario}/model_{model_run}.sol", model_run=MODELRUNS, scenario=SCENARIOS.index)
+#     output: "results/status.csv"
+#     log: "results/log/status.log"
+#     shell:
+#         """
+#         if [ {config[solver]} = gurobi ]
+#         then
+#             python workflow/scripts/run_status.py {output} {params.modelruns} {params.scenarios}
+#         elif [ {config[solver]} = cplex ]
+#             python workflow/scripts/run_status.py {output} {params.modelruns} {params.scenarios}
+#         else
+#             #! /bin/bash -x
+#             echo "SCENARIO,FILE,OBJECTIVE,STATUS" > {output}
+#             for FILE in ({input})
+#             do
+#             OBJ=$(head $FILE | grep -e 'objectiveValue' | cut -f 2 -d '=')
+#             STATUS=$(head $FILE | grep -e 'solutionStatusString' | cut -f 2 -d '=')
+#             JOB=$(echo $FILE | cut -f 3 -d '/' | cut -f 1 -d '.')
+#             echo "1,$JOB,$OBJ,$STATUS" >> {output}
+#             done
+#         fi
+#         """

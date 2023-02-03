@@ -6,9 +6,8 @@ rule generate_osemosys:
     message: "Running osemosys test"
     output:
         "osemosysfiles/simplicity.lp"
-
     wrapper:
-        "master/bio/osemosys"
+        'file://..'
 
 
 
